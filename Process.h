@@ -1,4 +1,8 @@
+#pragma once
+
 #include <string>
+#include <ProcessParser.h>
+
 
 using namespace std;
 /*
@@ -17,12 +21,12 @@ private:
 public:
     Process(string pid){
         this->pid = pid;
-        this->user = ProcessParser::getProcUser(pid);
-        //TODOs:
-        //complete for mem
-        //complete for cmd
-        //complete for upTime
-        //complete for cpu
+             user = ProcessParser::getProcUser(pid);
+              cmd = ProcessParser::getCmd(pid);
+              cpu = ProcessParser::getCpuPercent(pid);
+              mem = ProcessParser::getVmSize(pid);
+           upTime = ProcessParser::getSysUpTime();
+        
     }
     void setPid(int pid);
     string getPid()const;
@@ -35,10 +39,17 @@ public:
 };
 void Process::setPid(int pid){
     this->pid = pid;
+    
+    //complete for mem
+        //complete for cmd
+        //complete for upTime
+        //complete for cpu
 }
 string Process::getPid()const {
     return this->pid;
 }
+
+
 string Process::getProcess(){
     if(!ProcessParser::isPidExisting(this->pid))
         return "";
@@ -46,5 +57,5 @@ string Process::getProcess(){
     this->upTime = ProcessParser::getProcUpTime(this->pid);
     this->cpu = ProcessParser::getCpuPercent(this->pid);
 
-    return (this->pid + "   " + //TODO: finish the string! this->user + "   "+ mem...cpu...upTime...;
+    return (this->pid + "   " + this->user + "   " + + this->mem + "   "+ this->cpu + "   "+ this->upTime;
 }

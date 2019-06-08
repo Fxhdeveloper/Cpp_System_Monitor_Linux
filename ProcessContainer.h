@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Process.h"
 #include <vector>
 class ProcessContainer{
