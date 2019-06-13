@@ -1,5 +1,3 @@
-#pragma once
-
 #include <string>
 #include <fstream>
 
@@ -48,12 +46,13 @@ std::string Util::getProgressBar(std::string percent){
     return result;
 }
 
+
 // wrapper for creating streams
 void Util::getStream(std::string path, std::ifstream& stream){
     stream.open (path, std::ifstream::in);
     if (!stream && !stream.is_open()){
         stream.close();
-        throw std::runtime_error("Non - existing PID");
+        throw std::runtime_error("Non - existing file path: " + path);
     }
-    //return stream;
+    // std::cout << "Opening file: " << path << std::endl;
 }

@@ -1,5 +1,3 @@
-#pragma once
-
 #include <string>
 #include <iostream>
 #include <vector>
@@ -19,6 +17,7 @@ private:
     int totalProc;
     int runningProc;
     int threads;
+
 public:
 
     SysInfo(){
@@ -27,7 +26,7 @@ public:
     Initial data for individual cores is set
     System data is set
     */
-        this->getOtherCores(getNumberOfCores());
+        this->getOtherCores(ProcessParser::getNumberOfCores());
         this->setLastCpuMeasures();
         this->setAttributes();
         this-> OSname = ProcessParser::getOSName();
@@ -126,3 +125,4 @@ std::string SysInfo::getThreads()const {
 std::string SysInfo::getOSName()const {
     return this->OSname;
 }
+

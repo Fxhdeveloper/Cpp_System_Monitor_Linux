@@ -1,4 +1,3 @@
-#pragma once
 
 #include "Process.h"
 #include <vector>
